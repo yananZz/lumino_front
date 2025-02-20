@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './style.css';
 
 const ScreenKeepAwake = () => {
-    const [isKeepAwake, setIsKeepAwake] = useState(false);
+    // 默认开启
+    const [isKeepAwake, setIsKeepAwake] = useState(true);
     const [wakeLock, setWakeLock] = useState(null);
 
     // 请求屏幕常亮
@@ -57,6 +58,11 @@ const ScreenKeepAwake = () => {
             setIsKeepAwake(false);
         }
     };
+
+    // 初始化时自动开启
+    useEffect(() => {
+        requestWakeLock();
+    }, []);
 
     // 监听可见性变化
     useEffect(() => {

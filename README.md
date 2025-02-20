@@ -30,7 +30,7 @@
 ## 📦 安装使用
 
 ### 在线使用
-访问：[https://your-username.github.io/lumino_front/](https://your-username.github.io/lumino_front/)
+访问：[https://yananzz.github.io/lumino_front/](https://yananzz.github.io/lumino_front/)
 
 ### 本地开发
 
