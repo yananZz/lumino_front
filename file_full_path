@@ -1,0 +1,6 @@
+"scripts": {
+  "start": "react-scripts start",
+  "build": "react-scripts build --entry src/main.jsx", // 修改构建脚本以指向 main.jsx
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+},

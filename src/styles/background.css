@@ -1,5 +1,15 @@
-.app-background {
+.background-container {
     position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.app-background {
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -7,41 +17,119 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    filter: blur(5px);
-    transform: scale(1.05);
-    z-index: -1;
-    transition: background-image 1s ease-in-out;
+    filter: blur(2px);
+    transform: scale(1.01);
+    transition: all 0.8s ease-out;
 }
 
 .app-container {
     position: relative;
     min-height: 100vh;
-    backdrop-filter: blur(3px);
-    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(2px);
+    background: rgba(0, 0, 0, 0.1);
 }
 
-/* 添加渐变叠加层，确保文字清晰可见 */
-.app-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(0, 0, 0, 0.3) 0%,
-        rgba(0, 0, 0, 0.1) 100%
-    );
-    z-index: -1;
-}
-
-/* 添加加载动画 */
-@keyframes backgroundFade {
+@keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
 .app-background {
-    animation: backgroundFade 1s ease-in-out;
+    animation: fadeIn 1s ease-out;
+}
+
+/* 添加新的控制容器样式 */
+.controls-container {
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 100;
+    pointer-events: none;
+}
+
+/* 更新现有的控制按钮样式 */
+.wallpaper-controls {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    pointer-events: auto; /* 恢复按钮的点击事件 */
+}
+
+.wallpaper-source {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    pointer-events: auto; /* 恢复按钮的点击事件 */
+}
+
+.wallpaper-button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+}
+
+.wallpaper-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.wallpaper-button:active {
+    transform: scale(0.95);
+}
+
+.wallpaper-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: scale(1);
+}
+
+.loading-indicator {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    pointer-events: auto;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.source-button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.source-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.source-button:active {
+    transform: scale(0.95);
 } 
