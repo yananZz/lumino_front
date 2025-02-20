@@ -1,7 +1,7 @@
 import React from 'react';
-import ScreenKeepAwake from './ScreenKeepAwake.jsx';
-import DynamicBackground from './components/DynamicBackground';
-import './styles/background.css';
+import ScreenKeepAwake from './components/ScreenKeepAwake/index';
+import DynamicBackground from './components/DynamicBackground/index';
+import './styles/index.css';
 
 function App() {
     return (

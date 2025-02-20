@@ -13,7 +13,7 @@ export default defineConfig({
       }
     }
   },
-  base: '/lumino_front/', // 替换成你的仓库名
+  base: './',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
