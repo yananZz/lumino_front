@@ -1,68 +1,93 @@
 # 屏幕常亮工具
 
-一个简洁优雅的屏幕常亮工具，使用 Bing 每日壁纸作为背景。
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-## 功能特点
+## 📝 简介
 
-- 🌟 一键开启屏幕常亮
+一个优雅的屏幕常亮工具，集成了 Bing 每日壁纸作为动态背景。采用自适应设计，根据网络状况和设备屏幕自动调整壁纸质量。
+
+## ✨ 特性
+
+### 核心功能
+- 🔆 一键开启屏幕常亮
 - 🖼️ 自动加载 Bing 每日壁纸
-- 🎨 简约优雅的玻璃拟态设计
+- 🌐 智能网络适配
+- 📱 响应式设计
+
+### 技术特点
+- 🎨 玻璃态设计风格
 - 🔄 每24小时自动更新壁纸
-- ⚡ 轻量级，无需安装
+- 📊 网络状况自适应
+- 🖥️ 多分辨率支持
 
-## 技术栈
+## 🛠️ 技术栈
 
-- React 18
-- Vite 4
-- GitHub Actions 自动部署
+- **React 18** - 用户界面构建
+- **Vite 4** - 开发和构建工具
+- **GitHub Actions** - 自动部署
 
-## 本地开发
+## 📦 安装使用
 
-1. 克隆项目：
+### 在线使用
+访问：[https://your-username.github.io/lumino_front/](https://your-username.github.io/lumino_front/)
+
+### 本地开发
+
 ```bash
+# 克隆项目
 git clone https://github.com/your-username/lumino_front.git
+
+# 进入项目目录
 cd lumino_front
-```
 
-2. 安装依赖：
-```bash
+# 安装依赖
 npm install
-```
 
-3. 启动开发服务器：
-```bash
+# 启动开发服务器
 npm run dev
 ```
 
-## 项目结构
+## 🏗️ 项目结构
 
 ```
-lumino_front/
-├── src/
-│   ├── components/
-│   │   ├── DynamicBackground.jsx    # Bing 壁纸背景组件
-│   │   └── ScreenKeepAwake.jsx      # 屏幕常亮组件
-│   ├── styles/
-│   │   └── background.css           # 背景样式
-│   ├── App.jsx                      # 主应用组件
-│   └── main.jsx                     # 入口文件
-└── package.json                     # 项目配置文件
+src/
+├── components/
+│   ├── DynamicBackground/     # 动态背景组件
+│   │   ├── index.jsx         # 组件逻辑
+│   │   └── style.css        # 组件样式
+│   └── ScreenKeepAwake/      # 屏幕常亮组件
+│       ├── index.jsx         # 组件逻辑
+│       └── style.css        # 组件样式
+├── styles/
+│   └── index.css            # 全局样式
+├── App.jsx                  # 主应用组件
+└── main.jsx                # 入口文件
 ```
 
-## 自动部署
+## 🔧 核心功能说明
 
-项目使用 GitHub Actions 自动部署到 GitHub Pages。每次推送到 master 分支时会自动触发部署流程。
+### 屏幕常亮
+- 通过定期更新页面标题保持屏幕活跃
+- 优雅的开关按钮控制
+- 自动恢复原始标题
 
-## 实现原理
+### 动态壁纸
+- 自动获取 Bing 每日壁纸
+- 多级图片质量（根据网络状况）：
+  - 4G网络：3840x2160
+  - 3G网络：1920x1080
+  - 其他：1280x720
+- 备用图片源自动切换
+- 窗口大小变化自适应
 
-- **屏幕常亮**: 通过定期更新页面标题来保持屏幕活跃
-- **背景更新**: 使用 Bing 壁纸 API 获取每日高清壁纸
-- **视觉效果**: 采用玻璃拟态设计，提供沉浸式体验
+## 🚀 部署
 
-## 开发者
+项目使用 GitHub Actions 自动部署到 GitHub Pages：
+- 推送到 master 分支自动触发部署
+- 自动构建和优化
+- 自动发布到 GitHub Pages
 
-- 设计与开发：[your-username](https://github.com/your-username)
+## 🤝 贡献
 
-## 许可
-
-MIT License
+欢迎提交 Issue 和 Pull Request！
