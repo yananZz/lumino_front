@@ -1,5 +1,5 @@
 .screen-keep-awake {
-    padding: 1rem;
+    padding: 1rem 2rem;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -7,7 +7,7 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    gap: 1rem;
 }
 
 .toggle-switch {
@@ -55,4 +55,12 @@ input:checked + .toggle-slider {
 
 input:checked + .toggle-slider:before {
     transform: translateX(20px);
+}
+
+.status-text {
+    color: white;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 48px;
+    text-align: left;
 } 
