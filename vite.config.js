@@ -18,4 +18,9 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
   },
+  publicDir: 'public',
+  worker: {
+    format: 'es',
+    plugins: []
+  }
 })

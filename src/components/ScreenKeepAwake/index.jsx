@@ -5,25 +5,49 @@ const ScreenKeepAwake = () => {
     // 默认开启
     const [isKeepAwake, setIsKeepAwake] = useState(true);
     const [wakeLock, setWakeLock] = useState(null);
+    const [serviceWorker, setServiceWorker] = useState(null);
+
+    // 注册 Service Worker
+    const registerServiceWorker = async () => {
+        try {
+            if ('serviceWorker' in navigator) {
+                const registration = await navigator.serviceWorker.register('/serviceWorker.js');
+                setServiceWorker(registration);
+                console.log('Service Worker registered');
+                return registration;
+            }
+            return null;
+        } catch (error) {
+            console.error('Service Worker registration failed:', error);
+            return null;
+        }
+    };
 
     // 请求屏幕常亮
     const requestWakeLock = async () => {
         try {
+            // 首先尝试 Wake Lock API
             if ('wakeLock' in navigator) {
-                // 使用 Screen Wake Lock API
                 const lock = await navigator.wakeLock.request('screen');
                 console.log('Screen Wake Lock is active');
                 setWakeLock(lock);
                 return true;
-            } else {
-                // 降级方案：使用 title 更新
-                const interval = setInterval(() => {
-                    document.title = new Date().toISOString();
-                }, 1000);
-                setWakeLock(interval);
-                console.log('Using title update fallback');
+            }
+            
+            // 如果没有 Wake Lock API，使用 Service Worker
+            if (serviceWorker) {
+                serviceWorker.active.postMessage('keepAwake');
+                console.log('Using Service Worker for wake lock');
                 return true;
             }
+
+            // 最后使用 title 更新作为降级方案
+            const interval = setInterval(() => {
+                document.title = new Date().toISOString();
+            }, 1000);
+            setWakeLock(interval);
+            console.log('Using title update fallback');
+            return true;
         } catch (error) {
             console.error('Failed to request wake lock:', error);
             return false;
@@ -59,9 +83,13 @@ const ScreenKeepAwake = () => {
         }
     };
 
-    // 初始化时自动开启
+    // 初始化
     useEffect(() => {
-        requestWakeLock();
+        const init = async () => {
+            await registerServiceWorker();
+            await requestWakeLock();
+        };
+        init();
     }, []);
 
     // 监听可见性变化
